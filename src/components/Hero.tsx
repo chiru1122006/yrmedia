@@ -235,7 +235,7 @@ export default function Hero() {
               {isLoaded && (
                 <div className="reveal-container">
                   <div className="text-reveal-layer" style={{ animationDelay: '0.2s' }}>
-                    we edit <span className="text-[#FC8019] italic pr-2 md:pr-4">delivering</span>
+                    we edit <span className="text-[#FC8019] italic pr-2 md:pr-4">deliver</span>
                   </div>
                   <div className="block-reveal-layer" style={{ animationDelay: '0.2s' }}></div>
                 </div>
@@ -245,7 +245,7 @@ export default function Hero() {
               {isLoaded && (
                 <div className="reveal-container mt-1 md:mt-2 w-full max-w-[800px] flex justify-center">
                   <div className="text-reveal-layer flex w-full justify-center md:pl-12" style={{ animationDelay: '0.6s' }}>
-                    in <span className="text-[#FC8019] italic pr-2 md:pr-4 ml-6 md:ml-16">10 min.</span>
+                    reels in <span className="text-[#FC8019] italic pr-2 md:pr-4 ml-6 md:ml-16">10 min.</span>
                   </div>
                   <div className="block-reveal-layer" style={{ animationDelay: '0.6s', backgroundColor: '#ffffff' }}></div>
                 </div>
