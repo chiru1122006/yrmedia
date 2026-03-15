@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import headerImage from '../images/herosection/header.png';
 import subjectImage from '../images/herosection/subject.png';
 
 // SplitHoverText Helper Component
 const SplitHoverText = ({ text }: { text: string }) => {
   return (
-    <a href="#" className="group relative inline-flex overflow-hidden text-[1rem] sm:text-[1.2rem] md:text-[1.5rem] font-black uppercase tracking-tighter leading-[1.1] text-white no-underline font-satoshi">
+    <a href="#" className="group relative inline-flex overflow-hidden text-[1rem] sm:text-[1.2rem] md:text-[1.5rem] font-black uppercase tracking-tighter leading-[1.1] md:leading-[1.1] text-white no-underline">
       <div className="flex">
         {text.split('').map((char, i) => (
           <span 
@@ -230,12 +231,12 @@ export default function Hero() {
           <div className="relative flex flex-col items-center justify-end w-full mt-4 md:mt-8 h-[70vh]">
             
             {/* Added Animation Text block */}
-            <div className="absolute top-[-5%] md:top-0 left-1/2 transform -translate-x-1/2 z-0 flex flex-col items-center text-center text-[2.5rem] leading-[1.05] sm:text-5xl md:text-[5rem] lg:text-[6rem] font-impact uppercase text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] w-full">
+            <div className="absolute top-[-5%] md:top-0 left-1/2 transform -translate-x-1/2 z-0 flex flex-col items-center text-center text-4xl md:text-[56px] lg:text-[72px] font-black uppercase tracking-tighter leading-[1.1] md:leading-[1.1] text-white drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)] w-full">
               {/* Line 1 */}
               {isLoaded && (
                 <div className="reveal-container">
                   <div className="text-reveal-layer" style={{ animationDelay: '0.2s' }}>
-                    we edit <span className="text-[#FC8019] italic pr-2 md:pr-4">deliver</span>
+                    we shoot edit <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fc8019] to-[#ff4d4d] pr-2 md:pr-4">deliver</span>
                   </div>
                   <div className="block-reveal-layer" style={{ animationDelay: '0.2s' }}></div>
                 </div>
@@ -245,7 +246,7 @@ export default function Hero() {
               {isLoaded && (
                 <div className="reveal-container mt-1 md:mt-2 w-full max-w-[800px] flex justify-center">
                   <div className="text-reveal-layer flex w-full justify-center md:pl-12" style={{ animationDelay: '0.6s' }}>
-                    reels in <span className="text-[#FC8019] italic pr-2 md:pr-4 ml-6 md:ml-16">10 min.</span>
+                    reels in<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#fc8019] to-[#ff4d4d] pr-2 md:pr-4 ml-6 md:ml-16">10 min.</span>
                   </div>
                   <div className="block-reveal-layer" style={{ animationDelay: '0.6s', backgroundColor: '#ffffff' }}></div>
                 </div>
@@ -253,33 +254,75 @@ export default function Hero() {
             </div>
 
             {/* NEW FOOTER STYLE SPLIT TEXT - LEFT & RIGHT COLUMNS */}
-            <div className="absolute top-[35%] md:top-[40%] w-full flex justify-between px-2 md:px-0 lg:px-8 z-20 pointer-events-auto">
+            <div className="hidden sm:flex absolute top-[35%] md:top-[40%] w-full justify-between px-2 md:px-0 lg:px-8 z-20 pointer-events-auto">
               
               {/* Left Column */}
               <div className="flex flex-col items-start text-left md:-ml-8 lg:-ml-16">
-                <div className="flex items-center gap-4 text-[0.6rem] md:text-[0.7rem] uppercase tracking-[0.15em] text-[#888888] mb-4 font-bold font-satoshi">
-                  <span className="w-8 h-px bg-[#888888] opacity-40 block"></span>
-                  HOW IT WORKS
-                </div>
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                  className="w-full md:!opacity-100 md:!transform-none"
+                >
+                  <div className="flex items-center gap-4 text-[0.6rem] md:text-[0.7rem] uppercase tracking-[0.15em] text-[#888888] mb-4 font-bold">
+                    <span className="w-8 h-px bg-[#888888] opacity-40 block"></span>
+                    HOW IT WORKS
+                  </div>
+                </motion.div>
                 <div className="flex flex-col items-start gap-3">
-                  <SplitHoverText text="BOOK A CREATOR" />
-                  <SplitHoverText text="WE SHOOT" />
-                  <SplitHoverText text="WE EDIT" />
-                  <SplitHoverText text="DELIVERED IN 10 MINUTES" />
+                  {[
+                    "BOOK A CREATOR",
+                    "WE SHOOT",
+                    "WE EDIT",
+                    "DELIVERED IN 10 MINUTES"
+                  ].map((text, idx) => (
+                    <motion.div
+                      key={text}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5, delay: 0.1 * (idx + 2), ease: "easeOut" }}
+                      className="md:!opacity-100 md:!transform-none"
+                    >
+                      <SplitHoverText text={text} />
+                    </motion.div>
+                  ))}
                 </div>
               </div>
 
               {/* Right Column */}
               <div className="flex flex-col items-end text-right hidden sm:flex md:-mr-8 lg:-mr-16">
-                <div className="flex items-center gap-4 text-[0.6rem] md:text-[0.7rem] uppercase tracking-[0.15em] text-[#888888] mb-4 font-bold font-satoshi">
-                  WHAT WE DO
-                  <span className="w-8 h-px bg-[#888888] opacity-40 block"></span>
-                </div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                  className="w-full md:!opacity-100 md:!transform-none"
+                >
+                  <div className="flex items-center gap-4 text-[0.6rem] md:text-[0.7rem] uppercase tracking-[0.15em] text-[#888888] mb-4 font-bold">
+                    WHAT WE DO
+                    <span className="w-8 h-px bg-[#888888] opacity-40 block"></span>
+                  </div>
+                </motion.div>
                 <div className="flex flex-col items-end gap-3">
-                  <SplitHoverText text="INSTANT REEL PRODUCTION" />
-                  <SplitHoverText text="FAST SOCIAL EDITING" />
-                  <SplitHoverText text="CREATOR NETWORK" />
-                  <SplitHoverText text="READY TO POST CONTENT" />
+                  {[
+                    "INSTANT REEL PRODUCTION",
+                    "FAST SOCIAL EDITING",
+                    "CREATOR NETWORK",
+                    "READY TO POST CONTENT"
+                  ].map((text, idx) => (
+                    <motion.div
+                      key={text}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.5, delay: 0.1 * (idx + 2), ease: "easeOut" }}
+                      className="md:!opacity-100 md:!transform-none"
+                    >
+                      <SplitHoverText text={text} />
+                    </motion.div>
+                  ))}
                 </div>
               </div>
 
