@@ -16,14 +16,11 @@ const STAGES: Stage[] = [
     tag: "Free Consultation",
     description: (
       <>
-        <p className="mb-4">We understand your brand, audience, and content goals. We discuss the type of reel you need — promotional, event, product, or personal branding.</p>
+        <p className="mb-4">We understand your brand and goals, then craft a unique concept and quick plan for maximum impact.</p>
         <ul className="list-disc pl-5 space-y-1 text-zinc-400">
-          <li>Reel concept & hook strategy</li>
-          <li>Shooting style & angles</li>
-          <li>Trend alignment (music, format, pacing)</li>
-          <li>Platform optimization (Instagram / YouTube Shorts)</li>
+          <li>Personalized concept</li>
+          <li>Platform alignment</li>
         </ul>
-        <p className="mt-4">We create a quick execution plan so your reel delivers maximum impact in minimum time.</p>
       </>
     ),
     imageUrl: "https://cdn.prod.website-files.com/6916200346ddd8428d3d953b/691cb7bc0a4b297c526c6bf3_c8c39e48c9cd7332dee4420f5b23c03f_img-1.webp"
@@ -136,7 +133,49 @@ const Page5: React.FC = () => {
           </h1>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-[180px_1fr] lg:grid-cols-[220px_1fr] gap-12 lg:gap-24 items-start">
+        <div className="md:hidden flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory hide-scrollbar">
+          {STAGES.map((stage) => (
+            <section 
+              key={stage.number}
+              className="flex-none w-[85vw] snap-center snap-always bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              <div className="relative h-48 sm:h-56">
+                <img 
+                  src={stage.imageUrl} 
+                  alt={stage.title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-xl text-xl font-black shadow-lg z-10"
+                   style={{ backgroundColor: swiggyOrange }}>
+                  {stage.number}
+                </div>
+              </div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex flex-col gap-2 mb-4">
+                  <h2 className="text-2xl font-bold uppercase tracking-tight leading-tight">
+                    {stage.title}
+                  </h2>
+                  {stage.tag && (
+                    <span 
+                      className="text-black text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider self-start"
+                      style={{ backgroundColor: swiggyOrange }}
+                    >
+                      {stage.tag}
+                    </span>
+                  )}
+                </div>
+
+                <div className="text-zinc-400 text-sm leading-relaxed font-light">
+                  {stage.description}
+                </div>
+              </div>
+            </section>
+          ))}
+        </div>
+
+        {/* Existing Grid for Tablet/Desktop */}
+        <div className="hidden md:grid grid-cols-[180px_1fr] lg:grid-cols-[220px_1fr] gap-12 lg:gap-24 items-start">
           
           {/* Sidebar with sticky numbers */}
           <aside className="hidden md:block sticky top-48 h-[600px]">
@@ -173,12 +212,6 @@ const Page5: React.FC = () => {
                 ref={(el: HTMLDivElement | null) => { sectionRefs.current[index] = el; }}
                 className="stage-section scroll-mt-48"
               >
-                <div 
-                  className="md:hidden inline-flex items-center justify-center w-14 h-14 rounded-xl text-2xl font-black mb-8 shadow-lg"
-                  style={{ backgroundColor: swiggyOrange }}
-                >
-                  {stage.number}
-                </div>
 
                 <div className="flex flex-wrap items-baseline gap-4 mb-6">
                   <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight">
