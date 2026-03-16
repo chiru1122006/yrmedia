@@ -1,4 +1,5 @@
 import React from 'react';
+import headerImg from '../images/herosection/header.png';
 
 interface HeaderProps {
   activeTab?: string;
@@ -103,7 +104,7 @@ const Header: React.FC<HeaderProps> = () => {
           {/* CENTER: Brand Icon */}
           <div className="flex-shrink-0 flex items-center justify-center">
             <a href="/" className="hover:opacity-80 transition-opacity">
-               <img src="../src/images/herosection/header.png" alt="yr media" className="h-10 md:h-16 w-auto object-contain" />
+               <img src={headerImg} alt="yr media" className="h-10 md:h-16 w-auto object-contain" />
             </a>
           </div>
 
