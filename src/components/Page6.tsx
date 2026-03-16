@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, MouseEvent, TouchEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // --- Types ---
 interface Testimonial {
