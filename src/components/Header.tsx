@@ -1,5 +1,5 @@
 import React from 'react';
-
+import headerImg from '../images/herosection/header.png';
 interface HeaderProps {
   activeTab?: string;
 }
