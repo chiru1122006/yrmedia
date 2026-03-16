@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Linkedin, Youtube, Instagram, MessageCircle } from 'lucide-react';
 import headerImg from '../images/herosection/header.png';
 
